@@ -29,6 +29,9 @@ var app = angular.module('group', ['ngRoute','ui.bootstrap', 'angular-spinkit', 
 			resolve: {
 				getUsers: function(bootcampService) {
 					return bootcampService.getUsers()
+				},
+				getUser: function(bootcampService) {
+					 return bootcampService.getUser()
 				}
 			}
 		})
