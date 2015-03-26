@@ -1,12 +1,14 @@
 var app = angular.module('group');
 
 
-app.controller('homeCtrl', function ($scope, $log, $location, getRandomProjects, isLoggedIn, loginService) {
+app.controller('homeCtrl', function ($scope, $log, $location, getRandomProjects, isLoggedIn, loginService, registerService, projectService, dashboardLink) {
   console.log(isLoggedIn)
   $scope.loggedIn = isLoggedIn;
+  $scope.dashboardLink = dashboardLink;
+
 
   $scope.logout = function() {
-    loginService.logout();
+    loginService.logout()
   };
 
   $scope.go = function () {
