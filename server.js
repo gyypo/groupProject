@@ -1,3 +1,4 @@
+var Dotenv = require('dotenv').load();
 var Express = require('express');
 var Mongoose = require('mongoose');
 var BodyParser = require('body-parser');
@@ -86,8 +87,8 @@ app.post('/api/bootcamp/unverify/student', bootcampCtrl.unverifyStudent);
 
 //Github Login
 Passport.use(new GithubStrategy({
-	clientID: '7711a028c6230935c259',
-	clientSecret: '34062aa6e6f4711ca6822b0bb3240d06074dcafb',
+	clientID: process.env.GITHUB_CLIENTID,
+	clientSecret: process.env.GITHUB_SECRET,
 	callbackURL: 'http://localhost:8888/auth/github/callback'
 }, 
 function (token, refreshToken, profile, done) {
