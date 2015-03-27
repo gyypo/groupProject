@@ -142,8 +142,8 @@ var requireAuth = function (req, res, next) {
 	return next()
 }
 
-app.listen(port);
-console.log('listening on port ' + port)
+app.listen(process.env.EXPRESS_PORT || port);
+console.log('listening on port ' + process.env.EXPRESS_PORT || port);
 
 
 
