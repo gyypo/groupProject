@@ -9,7 +9,8 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="#/projects">Projects</a></li>
-				<li><a href="" ng-click="logout()">Logout</a></li>
+				<li><a ng-click="logout()">Logout</a></li>
+				<li><img class='user_image' height="75px" width='75px' src="{{user.profilePic}}"></li>
 			</ul>
 		</nav>	
 	</header>
@@ -22,7 +23,7 @@
 
 	<div class='student'>
 	<!-- 	<div class='student'>Mike Jones -->
-		<img class='student_image' height='75px' width='75px' ng-src='{{student.profilePic}}'>
+		<img class='student_image' height='50px' width='50px' ng-src='{{student.profilePic}}'>
 		<div class='student_name'>{{student.name}}</div>
 	</div>
 	<div class="four">

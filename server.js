@@ -1,3 +1,4 @@
+var Dotenv = require('dotenv').load();
 var Express = require('express');
 var Mongoose = require('mongoose');
 var BodyParser = require('body-parser');
@@ -76,6 +77,7 @@ app.get('/api/user/projects', userCtrl.getProjects);
 app.delete('/api/user/projects/:imgId', userCtrl.removeProject);
 app.post('/api/project/vote', projectCtrl.submitVote);
 
+app.get('/api/bootcamp/user', bootcampCtrl.getUser);
 app.get('/api/getBootcamps', bootcampCtrl.getBootcamps);
 app.get('/api/bootcampUsers', bootcampCtrl.getUsers);
 app.post('/api/bootcamp', bootcampCtrl.updateOrCreate)
@@ -85,8 +87,8 @@ app.post('/api/bootcamp/unverify/student', bootcampCtrl.unverifyStudent);
 
 //Github Login
 Passport.use(new GithubStrategy({
-	clientID: '7711a028c6230935c259',
-	clientSecret: '34062aa6e6f4711ca6822b0bb3240d06074dcafb',
+	clientID: process.env.GITHUB_CLIENTID,
+	clientSecret: process.env.GITHUB_SECRET,
 	callbackURL: 'http://localhost:8888/auth/github/callback'
 }, 
 function (token, refreshToken, profile, done) {
