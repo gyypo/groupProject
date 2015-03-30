@@ -89,7 +89,7 @@ app.post('/api/bootcamp/unverify/student', bootcampCtrl.unverifyStudent);
 Passport.use(new GithubStrategy({
 	clientID: process.env.GITHUB_CLIENTID,
 	clientSecret: process.env.GITHUB_SECRET,
-	callbackURL: process.env.CALLBACKURL || 'http://localhost:8888/auth/github/callback'
+	callbackURL: process.env.CALLBACKURL || 'http://ngshowcase.com/auth/github/callback'
 }, 
 function (token, refreshToken, profile, done) {
 	userCtrl.updateOrCreate(profile)
@@ -142,8 +142,8 @@ var requireAuth = function (req, res, next) {
 	return next()
 }
 
-app.listen(process.env.EXPRESS_PORT || port);
-console.log('listening on port ' + process.env.EXPRESS_PORT || port);
+app.listen(8888);
+console.log('listening on port ' + process.env.EXPRESS_PORT || 8888);
 
 
 
