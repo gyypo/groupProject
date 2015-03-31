@@ -1,4 +1,4 @@
-var Dotenv = require('dotenv').load();
+var dotenv = require('dotenv').load()
 var Express = require('express');
 var Mongoose = require('mongoose');
 var BodyParser = require('body-parser');
@@ -82,8 +82,8 @@ app.post('/api/bootcamp/unverify/student', bootcampCtrl.unverifyStudent);
 
 //Github Login
 Passport.use(new GithubStrategy({
-	clientID: process.env.GITHUB_CLIENTID,
-	clientSecret: process.env.GITHUB_SECRET,
+	clientID: process.env.GITHUB_CLIENTID || '7711a028c6230935c259',
+	clientSecret: process.env.GITHUB_SECRET || '34062aa6e6f4711ca6822b0bb3240d06074dcafb',
 	callbackURL: process.env.CALLBACKURL || 'http://localhost:8888/auth/github/callback'
 }, 
 function (token, refreshToken, profile, done) {
@@ -138,13 +138,4 @@ var requireAuth = function (req, res, next) {
 }
 
 app.listen(8888);
-console.log('listening on port ' + (process.env.EXPRESS_PORT || 8888));
-
-
-
-
-
-
-
-
-
+console.log('listening on port ' + port);
