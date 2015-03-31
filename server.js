@@ -59,11 +59,6 @@ app.get('/api/user/logout', function(req, res){
   req.logOut();
   res.redirect('/#/');
 });
-// var returnTo = req.query.returnTo;
-// app.get('/api/user/logout', function(req, res){
-// 	req.logout();
-// 	delete req.session;
-//   return redir(res, returnTo);
 
 app.get('/api/user/dashboardLink', registerCtrl.dashboardLink);
 app.get('/api/user/isLoggedIn', registerCtrl.isLoggedIn);
@@ -89,7 +84,7 @@ app.post('/api/bootcamp/unverify/student', bootcampCtrl.unverifyStudent);
 Passport.use(new GithubStrategy({
 	clientID: process.env.GITHUB_CLIENTID,
 	clientSecret: process.env.GITHUB_SECRET,
-	callbackURL: 'http://ngshowcase.com/auth/github/callback'
+	callbackURL: process.env.CALLBACKURL || 'http://localhost:8888/auth/github/callback'
 }, 
 function (token, refreshToken, profile, done) {
 	userCtrl.updateOrCreate(profile)
