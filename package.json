@@ -9,7 +9,7 @@
     "express": "^3.0.0",
     "express-session": "^1.10.3",
     "install": "^0.1.8",
-    "mongoose": "^3.8.24",
+    "mongoose": "^3.8.0",
     "mongoose-random": "^0.1.1",
     "npm": "^2.7.3",
     "passport": "^0.2.1",
