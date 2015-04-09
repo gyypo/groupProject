@@ -17,7 +17,7 @@ app.service('projectService', function($http, $q) {
 	this.saveProject = function (projectObj) {
 		return $http({
 			method: 'POST',
-			url: "api/user/saveProject",
+			url: 'api/user/saveProject',
 			data: projectObj
 		})
 	}

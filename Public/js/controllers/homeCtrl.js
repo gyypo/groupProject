@@ -5,9 +5,9 @@ app.controller('homeCtrl', function ($scope, $log, $location, getRandomProjects,
   console.log(isLoggedIn)
   $scope.loggedIn = isLoggedIn;
 
-  $scope.logout = function() {
-    loginService.logout();
-  };
+  // $scope.logout = function() {
+  //   loginService.logout();
+  // };
 
   $scope.go = function () {
     $location.path('/register');

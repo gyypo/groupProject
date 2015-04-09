@@ -53,6 +53,10 @@ Passport.deserializeUser(function(obj, done) {
 
 
 //endpoints
+app.get('/api/user/userinfo', function (req, res) {
+	res.status(200).json(req.user)
+});
+
 app.get('/logout', function (req, res) {
 	res.status(200).json(req.user)
 })
