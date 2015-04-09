@@ -1,6 +1,8 @@
 var app = angular.module('group');
 
-app.controller('bootcampCtrl',function($scope, bootcampService, getUsers, loginService) {
+app.controller('bootcampCtrl',function($scope, bootcampService, getUsers, getUser, loginService) {
+	$scope.user = getUser;
+
 	$scope.unverified = getUsers[0];
   	$scope.verified = getUsers[1];
 

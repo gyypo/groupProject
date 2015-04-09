@@ -1,3 +1,4 @@
+var dotenv = require('dotenv').load()
 var Express = require('express');
 var Mongoose = require('mongoose');
 var BodyParser = require('body-parser');
@@ -5,7 +6,6 @@ var Passport = require('passport');
 var Session = require('express-session');
 var request = require('request');
 var GithubStrategy = require('passport-github').Strategy;
-
 
 //Express
 var port = 8888
@@ -21,7 +21,6 @@ var registerCtrl = require('./lib/controllers/registerCtrl');
 var User = require('./lib/models/user');
 var Bootcamp = require('./lib/models/bootcamp');
 
-
 //Mongoose
 var mongoUri = 'mongodb://localhost:27017/groupProject';
 Mongoose.connect(mongoUri);
@@ -35,7 +34,7 @@ db.once('open', function() {
 app.use(Express.static(__dirname+'/Public'));
 app.use(BodyParser.json());
 app.use(Session({
-	secret: 'JFDSF98hew98h8hDSOIFoiDiji3333',
+	secret: 'JFDSF98hew98h8hDSOIFoiDijPi3333',
 	saveUninitialized: true,
 	resave:true
 }));
@@ -46,20 +45,28 @@ app.use(Passport.session());
 Passport.serializeUser(function(user, done) {
   done(null, user);
 });
-
 Passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
 
 //endpoints
+<<<<<<< HEAD
 app.get('/api/user/userinfo', function (req, res) {
 	res.status(200).json(req.user)
 });
 
 app.get('/logout', function (req, res) {
+=======
+
+app.get('/api/user/userInfo', function(req, res) {
+>>>>>>> upstream/master
 	res.status(200).json(req.user)
 })
+app.get('/api/user/logout', function(req, res){
+  req.logOut();
+  res.redirect('/#/');
+});
 
 app.get('/api/user/dashboardLink', registerCtrl.dashboardLink);
 app.get('/api/user/isLoggedIn', registerCtrl.isLoggedIn);
@@ -73,22 +80,19 @@ app.get('/api/user/projects', userCtrl.getProjects);
 app.delete('/api/user/projects/:imgId', userCtrl.removeProject);
 app.post('/api/project/vote', projectCtrl.submitVote);
 
+app.get('/api/bootcamp/user', bootcampCtrl.getUser);
 app.get('/api/getBootcamps', bootcampCtrl.getBootcamps);
 app.get('/api/bootcampUsers', bootcampCtrl.getUsers);
 app.post('/api/bootcamp', bootcampCtrl.updateOrCreate)
 app.post('/api/bootcamp/verify/student', bootcampCtrl.verifyStudent);
 app.post('/api/bootcamp/unverify/student', bootcampCtrl.unverifyStudent);
 
-app.get('/api/user/logout', function(req, res){
-	  req.logout();
-	  res.redirect('/');
-	})
 
 //Github Login
 Passport.use(new GithubStrategy({
-	clientID: '7711a028c6230935c259',
-	clientSecret: '34062aa6e6f4711ca6822b0bb3240d06074dcafb',
-	callbackURL: 'http://localhost:8888/auth/github/callback'
+	clientID: process.env.GITHUB_CLIENTID || '7711a028c6230935c259',
+	clientSecret: process.env.GITHUB_SECRET || '34062aa6e6f4711ca6822b0bb3240d06074dcafb',
+	callbackURL: process.env.CALLBACKURL || 'http://localhost:8888/auth/github/callback'
 }, 
 function (token, refreshToken, profile, done) {
 	userCtrl.updateOrCreate(profile)
@@ -107,7 +111,7 @@ app.get('/auth/github',
 	Passport.authenticate('github'))
 
 app.get('/auth/github/callback',
-	Passport.authenticate('github',{ failureRedirect: '/#/login'}),
+	Passport.authenticate('github',{ failureRedirect: '/#/' }),
 	function(req, res) {
 
 		Bootcamp.findOne({'githubId': req.user.githubId}, function(err, bootcamp) {
@@ -141,17 +145,5 @@ var requireAuth = function (req, res, next) {
 	return next()
 }
 
-
-
-
-app.listen(port);
-console.log('listening on port ' + port)
-
-
-
-
-
-
-
-
-
+app.listen(8888);
+console.log('listening on port ' + port);

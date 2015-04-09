@@ -44,7 +44,7 @@
 }
 
 /*Modals*/
-.modal-content{
+.modal-content {
   margin-top: 20px;
   z-index: 10;
 }
@@ -80,10 +80,14 @@
   padding: 5px 5px;
 }*/
 
-.project-images{
+.project-images {
   height: 300px;
   width: 300px;
   margin: 10px;
+}
+
+.vote-container {
+  padding-left: 10px;
 }
 .unverified-users {
   width: 300px;
@@ -158,6 +162,10 @@ body {
   margin-top: 0px;
   height: 120px;
   width: 120px;
+}
+
+.user_image {
+  border-radius: 50px;
 }
 
 

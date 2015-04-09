@@ -23,6 +23,21 @@ app.service('bootcampService', function($http, $q) {
 	return dfd.promise
 	}
 
+	this.getUser = function () {
+		var dfd = $q.defer();
+		$http({
+			method: 'GET',
+			url: '/api/bootcamp/user'
+		}).then(function(res) {
+			if(res.status === 200) {
+				dfd.resolve(res.data)
+			} else {
+				dfd.resolve("There was an error")
+			}
+		})
+		return dfd.promise
+	}
+
 	this.verifyStudent = function(student) {
 		return $http({
 				method: 'POST',

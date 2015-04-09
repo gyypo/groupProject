@@ -9,7 +9,9 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
+					<li><a href=""></a></li>
 					<li><a href="#/projects">Projects</a></li>
+					<li ng-show='dashboardLink'><a href="{{dashboardLink}}">Dashboard</a></li>
 					<li ng-show='!loggedIn'><a href="/auth/github">Sign in with Github</a></li>
 					<li ng-show='loggedIn'><a href='/api/user/logout'>Logout</a></li>
 				</ul>
@@ -42,7 +44,7 @@
 					
 						<!-- Box -->
 							<section class="box feature last">
-								<a href="{{randomProjects[0].url}}" target="_blank" class="image featured"><img ng-src="data:image/png;base64,{{randomProjects[0].img}}" alt="" /></a>
+								<a href="http://{{randomProjects[0].url}}" target="_blank" class="image featured"><img ng-src="data:image/png;base64,{{randomProjects[0].img}}" alt="" /></a>
 								<div class="inner">
 									<header>
 										<h2>{{randomProjects[0].projectName}}</h2>
@@ -56,7 +58,7 @@
 					
 						<!-- Box -->
 							<section class="box feature">
-								<a href="{{randomProjects[1].url}}" target="_blank" class="image featured"><img ng-src="data:image/png;base64,{{randomProjects[1].img}}" alt="" /></a>
+								<a href="http://{{randomProjects[1].url}}" target="_blank" class="image featured"><img ng-src="data:image/png;base64,{{randomProjects[1].img}}" alt="" /></a>
 								<div class="inner">
 									<header>
 										<h2>{{randomProjects[1].projectName}}</h2>
@@ -69,7 +71,7 @@
 					<div class="4u">
 					
 							<section class="box feature last">
-								<a href="{{randomProjects[2].url}}" target="_blank" class="image featured"><img ng-src="data:image/png;base64,{{randomProjects[2].img}}" alt="" /></a>
+								<a href="http://{{randomProjects[2].url}}" target="_blank" class="image featured"><img ng-src="data:image/png;base64,{{randomProjects[2].img}}" alt="" /></a>
 								<div class="inner">
 									<header>
 										<h2>{{randomProjects[2].projectName}}</h2>
@@ -96,17 +98,17 @@
 										<div class="grid">
 											<div class="row no-collapse 50%">
 												<div class="6u">
-													<a href="{{randomProjects[0].url}}"  target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[0].img}}" alt="" /></a>
+													<a href="http://{{randomProjects[0].url}}"  target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[0].img}}" alt="" /></a>
 												</div>
 												<div class="6u">
-													<a href="{{randomProjects[1].url}}"  target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[1].img}}" alt="" /></a>
+													<a href="http://{{randomProjects[1].url}}"  target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[1].img}}" alt="" /></a>
 											</div>
 											<div class="row no-collapse 50%">
 												<div class="6u">
-													<a href="{{randomProjects[2].url}}" target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[2].img}}" alt="" /></a>
+													<a href="http://{{randomProjects[2].url}}" target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[2].img}}" alt="" /></a>
 												</div>
 												<div class="6u">
-													<a href="{{randomProjects[3].url}}" target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[3].img}}" alt="" /></a>
+													<a href="http://{{randomProjects[3].url}}" target="_blank" class="image fit"><img ng-src="data:image/png;base64,{{randomProjects[3].img}}" alt="" /></a>
 												</div>
 											</div>
 											</div>
@@ -123,8 +125,7 @@
 								<div id="content">
 									<section class="last">
 										<h2>So what's this all about?</h2>
-										<!-- <p>This is <strong>ngShowCase()</strong>.</p> -->
-										<p>Born out of the frustration of researching programming bootcamps and being unable to check out projects from previous students. <strong>ngShowCase()</strong> was created as a platform for bootcamp students to show off their work and for prospective students to browse projects by from bootcamps they are interested in attending.</p>
+										<p>Born out of the frustration of researching coding bootcamps <strong>ngShowCase()</strong> is a place where prospective students can see websites and apps created by bootcamp graduates. If you're a bootcamp, sign up so you can verify your students. If you're a student sign up and share your work.</p>
 									</section>
 								</div>
 
